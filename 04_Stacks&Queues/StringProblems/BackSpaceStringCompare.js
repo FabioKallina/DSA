@@ -9,13 +9,13 @@ For example, given s = "ab#c" and t = "ad#c", return true. Because of the backsp
  * @returns {boolean}
  */
 var backspaceCompare = function(s, t) {
-    let build = s => {
+    let build = str => {
         let stack = [];
-        for ( const c of s) {
-            if ( c !== "#" ) {
-                stack.push(c);
-            } else if (stack.length) {
+        for ( const c of str ) {
+            if ( stack.length && c == "#" ) {
                 stack.pop();
+            } else {
+                stack.push(c);
             }
         }
         return stack.join("");

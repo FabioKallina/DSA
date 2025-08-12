@@ -36,7 +36,7 @@ var isValid = function(s) {
     return !stack.length;
 }
 /**
- * Because the stack's push and pop operations are
+* Because the stack's push and pop operations are
 O(1), this gives us a time complexity of O(n), where n is the size of the input array. 
 This is because each element can only be pushed or popped once. 
 The space complexity is also O(n) because the stack's size can grow linearly with the input size.
