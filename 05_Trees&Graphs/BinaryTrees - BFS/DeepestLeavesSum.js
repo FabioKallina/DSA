@@ -42,3 +42,30 @@ var deepestLeavesSum = function(root) {
     }
     return ans;
 };
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var deepestLeavesSum = function(root) {
+    if ( !root ) return 0;
+
+    let q = [root];
+    let ans = 0;
+
+    while ( q.length ) {
+        let level = q.length;
+        let nextQ = [];
+        let ans = 0; //reset at each level
+
+        for ( let i = 0; i < level; i++ ) {
+            let node = q[i];
+            ans += node.val;
+            if ( node.left ) nextQ.push(node.left);
+            if ( node.right ) nextQ.push(node.right);
+        }
+        q = nextQ;
+    }
+    //at the very end, since ans was reset at every level, when loop breaks (last level) the remaining sum will be ans
+    return ans;
+};
