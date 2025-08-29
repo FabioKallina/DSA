@@ -29,5 +29,18 @@ Explanation: Choose indices (1, 4) and nums becomes [2,3,-1,5,4].
  * @return {number}
  */
 var largestSumAfterKNegations = function(nums, k) {
-    
+    nums.sort((a, b) => a - b);
+
+    for ( let i = 0; i < nums.length; i++ ) {
+        if ( k > 0 && nums[i] < 0 ) {
+            nums[i] = -nums[i];
+            k--;
+        }
+    }
+
+    if ( k > 0 && k % 2 === 1 ) {
+        nums.sort((a, b) => a - b);
+        nums[0] = -nums[0];
+    }
+    return nums.reduce((sum, num) => sum + num, 0);
 };
