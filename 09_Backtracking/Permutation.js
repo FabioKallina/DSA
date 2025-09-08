@@ -11,7 +11,7 @@ var permute = function(nums) {
 
     let backtrack = curr => {
         if ( curr.length == nums.length ) {
-            async.push([...curr]);
+            ans.push([...curr]);
             return;
         }
         for ( const num of nums ) {

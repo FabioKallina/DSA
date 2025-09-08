@@ -51,3 +51,31 @@ var combinationSum3 = function(k, n) {
     backtrack([], 0, 1);
     return ans;
 };
+
+/**
+ * @param {number} k
+ * @param {number} n
+ * @return {number[][]}
+ */
+var combinationSum3 = function(k, n) {
+    
+    let backtrack = (path, start, curr) => {
+        if ( curr === n && path.length === k ) {
+            ans.push([...path]);
+            return;
+        }
+
+        for ( let i = start; i <= 9; i++ ) {
+            let num = i;
+            if ( curr + num <= n ) {
+                path.push(num);
+                backtrack(path, i + 1, curr + num);
+                path.pop();
+            }
+        }
+    }
+
+    let ans = [];
+    backtrack([], 1, 0);
+    return ans;
+};
