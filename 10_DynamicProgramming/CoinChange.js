@@ -43,3 +43,26 @@ var coinChange = function(coins, amount) {
  * Time: O(n * m) where n is copins.length and m is the amount
  * Space: O(m)
  */
+/**
+ * @param {number[]} coins
+ * @param {number} amount
+ * @return {number}
+ */
+var coinChange = function(coins, amount) {
+    let dp = ( i ) => {
+        if ( i === 0 ) return 0;
+        if ( i < 0 ) return Infinity;
+
+        if ( memo.has(i) ) return memo.get(i);
+
+        let min = Infinity;
+        for ( let c of coins ) {
+            min = Math.min(min, dp(i - c) + 1);
+        }
+        memo.set(i, min);
+        return min;
+    }
+    let memo = new Map();
+    let ans = dp(amount);
+    return ans === Infinity ? -1 : ans;
+};
