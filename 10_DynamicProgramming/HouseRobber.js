@@ -45,6 +45,26 @@ var rob = function(nums) {
     return dp(nums.length - 1);
 }
 
+/** Recursively 2
+ * @param {number[]} nums
+ * @returns {number}
+ */
+var rob = function(nums) {
+    let dp = ( i ) => {
+        if ( i === 0 ) return nums[0];
+        if ( i === 1 ) return Math.max(nums[0], nums[1]);
+
+        if ( memo.has(i) ) return memo.get(i);
+
+        let maxVal = Math.max(dp(i - 1), dp(i - 1) + nums[i]);
+        memo.set(i, maxVal);
+
+        return memo.get(i);
+    }
+    let memo = new Map();
+    return dp(nums.length - 1);
+}
+
 /** Iteratively
  * @param {number[]} nums
  * @returns {number}
