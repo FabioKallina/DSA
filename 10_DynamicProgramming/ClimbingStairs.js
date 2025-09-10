@@ -36,3 +36,16 @@ var climbStairs = function(n) {
     }
     return dp[n];
 };
+
+var climbStairs = function(n) {
+    
+    let dp = ( i ) => {
+        if ( i <= 2 ) return i;
+        if ( memo.has(i) ) return memo.get(i);
+
+        memo.set(i, dp(i - 1) + dp(i - 2));
+        return memo.get(i);
+    }
+    let memo = new Map();
+    return dp(n);
+};
