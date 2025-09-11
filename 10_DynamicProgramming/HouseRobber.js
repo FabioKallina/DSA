@@ -56,7 +56,7 @@ var rob = function(nums) {
 
         if ( memo.has(i) ) return memo.get(i);
 
-        let maxVal = Math.max(dp(i - 1), dp(i - 1) + nums[i]);
+        let maxVal = Math.max(dp(i - 1), dp(i - 2) + nums[i]);
         memo.set(i, maxVal);
 
         return memo.get(i);
