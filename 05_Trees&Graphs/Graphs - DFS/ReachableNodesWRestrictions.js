@@ -40,3 +40,39 @@ var reachableNodes = function(n, edges, restricted) {
  * Time: O(n + e) where n is the number of nodes and e the number of edges
  * Space: O(n + e)
  */
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number[]} restricted
+ * @return {number}
+ */
+var reachableNodes = function(n, edges, restricted) {
+    let graph = new Map();
+    for ( let [x, y] of edges ) {
+        if ( !graph.has(x) ) graph.set(x, []);
+        if ( !graph.has(y) ) graph.set(y, []);
+        graph.get(x).push(y);
+        graph.get(y).push(x);
+    }
+
+    let restrictedSet = new Set(restricted);
+    let seen = new Set();
+
+    let dfs = ( node ) => {
+        if ( restrictedSet.has(node) ) return;
+        seen.add(node);
+        let steps = 1;
+        for ( let neighbor of graph.get(node) ) {
+            if ( !seen.has(neighbor) ) {
+                steps += dfs(neighbor);
+            }
+        }
+        return steps;
+    }
+    return dfs(0);
+};
+/** Time and Space Complexity
+ * Time: O(n + e) where n is the number of nodes and e the number of edges
+ * Space: O(n + e)
+ */
