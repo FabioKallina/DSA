@@ -51,3 +51,34 @@ var findCircleNum = function(isConnected) {
     }
     return ans;
 }
+
+/**
+ * 
+ * @param {number[][]} isConnected 
+ * @returns {number}
+ */
+var findCircleNum = function(isConnected) {
+
+    let seen = new Set();
+    let ans = 0;
+
+    let dfs = ( node ) => {
+        seen.add(node);
+        for ( let i = 0; i < isConnected.length; i++ ) {
+            if ( isConnected[node][i] === 1 && !seen.has(i) ) {
+                dfs(i);
+            }
+        }
+    }
+    for ( let i = 0; i < isConnected.length; i++ ) {
+        if ( !seen.has(i) ) {
+            dfs(i);
+            ans++;
+        }
+    }
+    return ans;
+}
+/** Time and Space Complexity
+ * Time: O(n^2)
+ * Space: O(n)
+ */
