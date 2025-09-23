@@ -24,3 +24,24 @@ var findSmallestSetOfVertices = function(n, edges) {
     }
     return ans;
 }
+
+/**
+ * 
+ * @param {number} n 
+ * @param {number[][]} edges 
+ * @returns {number[]}
+ */
+var findSmallestSetOfVertices = function(n, edges) {
+    let indegree = new Set();
+    for ( let [from, to] of edges ) {
+        indegree.add(to);
+    }
+    let ans = [];
+    for ( let i = 0; i < n; i++ ) {
+        if ( !indegree.has(i) ) ans.push(i);
+    }
+}
+/** Time and Space Complexity
+ * Time: O(n + e) where n is the number of nodes and e the number of edges
+ * Space: O(n)
+ */

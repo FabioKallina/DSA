@@ -59,3 +59,40 @@ var findPath = function(n, edges, source, destination) {
     }
     return dfs(source);
 }
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number} source
+ * @param {number} destination
+ * @return {boolean}
+ */
+var validPath = function(n, edges, source, destination) {
+    let map = new Map();
+    for ( let [x, y] of edges ) {
+        if ( !map.has(x) ) {
+            map.set(x, []);
+        }
+        map.get(x).push(y);
+        if ( !map.has(y) ) {
+            map.set(y, []);
+        }
+        map.get(y).push(x);
+    }
+    let seen = new Set();
+    let dfs = ( node ) => {
+        if ( node === destination ) return true;
+        seen.add(node);
+        for ( let neighbor of map.get(node) ) {
+            if ( !seen.has(neighbor) ) {
+                if ( dfs(neighbor) ) return true;
+            }
+        }
+        return false;
+    }
+    return dfs(source);
+};
+/** Time and Space Complexity
+ * Time: O(n + e)
+ * Space: O(n + e)
+ */
