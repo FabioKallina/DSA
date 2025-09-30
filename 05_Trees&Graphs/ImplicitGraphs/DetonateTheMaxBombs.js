@@ -68,8 +68,8 @@ var maximumDetonation = function(bombs) {
     let dfs = ( node, seen ) => {
         seen.add(node);
         for ( let nei of graph.get(node) ) {
-            if ( !seen.has(node) ) {
-                dfs(node, seen);
+            if ( !seen.has(nei) ) {
+                dfs(nei, seen);
             }
         }
     }
