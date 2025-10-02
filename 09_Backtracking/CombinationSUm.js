@@ -30,3 +30,7 @@ var combinationSum = function(canditates, target) {
     backtrack([], 0, 0);
     return ans;
 }
+/** Time and Space Complexity
+ * Time: O( n^(target/min(candidates) )) where O(n) for recursion but O(target/min(candidate)) where you would use the lowest value until reaching target
+ * Space: O(target/min(candidate))
+ */

@@ -52,3 +52,7 @@ var letterCombinations = function(digits) {
     backtrack(0, "");
     return ans;
 };
+/** Time and Space Complexity
+ * Time: O(n * 4^n) 4^n because each digit maps 3 or 4 letters ( max = 4 ) so the recursion will explore up to 4^n, n being the length of digits
+ * Space: O(n * 4^n)
+ */
