@@ -15,13 +15,17 @@ var combine = function(n, k) {
             ans.push([...curr]);
             return;
         }
-        for ( num = i; num < n; num++ ) {
+        for ( num = i; num <= n; num++ ) {
             curr.push(num);
             backtrack(curr, i + 1);
             curr.pop();
         }
     }
     let ans = [];
-    backtrack([]);
+    backtrack([], 1);
     return ans;
 }
+/** Time and Space Complexity
+ * Time: O(k * n/k)
+ * Space: O(k * n/k)
+ */

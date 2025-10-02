@@ -25,3 +25,7 @@ var subsets = function(nums) {
     backtrack([], 0);
     return ans;
 }
+/** Time and Space Complexity
+ * Time: O(n * 2^n) becuase for each element you have 2 choices: include it or skip it (2^n), and then O(n) to copy it into ans
+ * Space: O(n * 2^n)
+ */

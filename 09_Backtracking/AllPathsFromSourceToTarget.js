@@ -25,9 +25,8 @@ var allPathsSourceTarget = function(graph) {
         path.push(node);
         if ( node === graph.length - 1 ) {
             ans.push([...path]);
-            return;
         }
-        for ( let neighbor of graph[i] ) {
+        for ( let neighbor of graph[node] ) {
             backtrack(neighbor, path);
         }
         path.pop();
@@ -36,3 +35,7 @@ var allPathsSourceTarget = function(graph) {
     backtrack(0, []);
     return ans;
 };
+/** Time and Space Complexity
+ * Time: O(2^n)
+ * Space: O(n)
+ */
