@@ -31,6 +31,7 @@ var smallestDivisor = function(nums, threshold) {
         for ( const num of nums ) {
             sum += Math.ceil(num / div) //or Math.floor((num + div - 1) / div)
         }
+        return sum <= threshold;
     }
 
     let left = 0;
@@ -46,6 +47,6 @@ var smallestDivisor = function(nums, threshold) {
     return left;
 }
 /** Time and Space Complexity
- * Time: O(n * logk) where n is for check, and logk for binary search
+ * Time: O(n * logk) where n is for check, and logk for binary search ( where k is max(nums))
  * Space: O(1) no extra space used
  */
